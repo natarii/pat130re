@@ -1,6 +1,6 @@
 PA-T130 Reverse Engineering
 ========
-This project encompasses my reverse engineering efforts on the Victor PA-T130 Program Chime ROM.
+This project encompasses my reverse engineering efforts on the Victor PA-T130 Program Chime.
 
 ## Overview
 TODO
