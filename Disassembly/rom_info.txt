@@ -7,6 +7,8 @@ option begin c000
 data c33a-c379 *patch bank
 unused c59c-cfff
 data fa83-fa8a *bit lut
+word fab0-fac7 *tune start end addr lut
+data fac8-fb47 *tune data
 
 *labels
 *mcu internal periphs
@@ -28,12 +30,13 @@ label c430 dummy_rts_c430
 label ec13 dummy_rts_ec13
 label fa83 bit_lut
 label fab0 tune_start_end_addr_lut
+label fac8 tune_westminster
+label faf9 tune_joy
+label fb1a tune_blue_sky
+label fb3b tune_ding_dong
 
 *comments
 *vars
 *code
 lcomment c323 b must be 1-indexed, patches actually start at $c33a
-lcomment fac8 westminster data here, <note num, like midi> <delay time>
-lcomment faf9 another tune
-lcomment fb1a another tune
-lcomment fb3b another tune
+lcomment fac8 <note num, like midi> <delay time>
