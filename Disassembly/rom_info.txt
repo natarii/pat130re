@@ -5,6 +5,7 @@ option begin c000
 
 *regions
 data c33a-c379 *patch bank
+unused c59c-cfff
 data fa83-fa8a *bit lut
 
 *labels
@@ -12,6 +13,13 @@ data fa83-fa8a *bit lut
 *vars
 label 2000 opll_reg
 label 2001 opll_data
+label 0081 cur_note
+label 0082 cur_note_delay
+label 0088 tune_no?
+label 008a tune_cur_addr
+label 008c tune_end_addr
+label 009e transpose
+label 00b9 cur_note_with_transpose
 *code
 label c323 upload_user_patch_b
 label c33a patch_bank
@@ -19,9 +27,13 @@ label c37a opll_upload_user_patch_x
 label c430 dummy_rts_c430
 label ec13 dummy_rts_ec13
 label fa83 bit_lut
+label fab0 tune_start_end_addr_lut
 
 *comments
 *vars
 *code
 lcomment c323 b must be 1-indexed, patches actually start at $c33a
 lcomment fac8 westminster data here, <note num, like midi> <delay time>
+lcomment faf9 another tune
+lcomment fb1a another tune
+lcomment fb3b another tune
