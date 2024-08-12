@@ -1,6 +1,6 @@
 *f9dasm base config
 option 6303
-file mcu.bin 8000
+file rom.bin 8000
 option begin c000
 
 *regions
