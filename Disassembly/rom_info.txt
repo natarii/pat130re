@@ -1,0 +1,27 @@
+*f9dasm base config
+option 6303
+file mcu.bin 8000
+option begin c000
+
+*regions
+data c33a-c379 *patch bank
+data fa83-fa8a *bit lut
+
+*labels
+*mcu internal periphs
+*vars
+label 2000 opll_reg
+label 2001 opll_data
+*code
+label c323 upload_user_patch_b
+label c33a patch_bank
+label c37a opll_upload_user_patch_x
+label c430 dummy_rts_c430
+label ec13 dummy_rts_ec13
+label fa83 bit_lut
+
+*comments
+*vars
+*code
+lcomment c323 b must be 1-indexed, patches actually start at $c33a
+lcomment fac8 westminster data here, <note num, like midi> <delay time>

@@ -1,0 +1,1 @@
+**Note:** `rom.asm` is a generated file. Labels, comments, etc are configured in rom_info.txt and then the f9dasm program is used to generate the disassembly from the info file and ROM dump. You can generate the disassembly using the following command: `f9dasm -out rom.asm -info rom_info.txt`
