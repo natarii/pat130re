@@ -21,6 +21,8 @@ data fac8-fb47 *tune data
 *mcu internal periphs
 label 0001 DDR2
 label 0003 PORT2
+label 0008 TCSR1
+label 000f TCSR2
 label 0015 PORT5_optical
 label 0016 DDR6
 label 0017 PORT6
@@ -79,4 +81,5 @@ lcomment e669 ???
 lcomment e66e ???
 lcomment e673 ???
 lcomment e682 end of card marker
+lcomment f8d1 OCF1
 lcomment fac8 <note num, like midi> <delay time>
