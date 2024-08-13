@@ -12,10 +12,13 @@ unused d1ab-d7ff
 data d800-dabb
 data e080-e083 *warm boot magic
 data e084-e08b *default patch?
+word e608-e657 *7seg 2digit lut 2
 word e6a9-e6b2 *card type jumptable
 unused dabc-dfff
 unused c59c-cfff
+data f27f-f286 *dow led lut
 data f2db-f2f2 *7seg lut
+word f3bb-f3da *7seg 2digit lut
 data fa83-fa8a *bit lut
 word fab0-fac7 *tune start end addr lut
 data fac8-fb47 *tune data
@@ -43,12 +46,18 @@ label 001f TESTREG
 *vars
 label 0050 card_raw_read
 label 0058 card_accu_read
+label 005a card_result?
 label 005b card_type
 label 0081 cur_note
 label 0082 cur_note_delay
 label 0088 tune_no?
 label 008a tune_cur_addr
 label 008c tune_end_addr
+label 0090 leds_hr10s
+label 0091 leds_hr1s
+label 0092 leds_min10s
+label 0093 leds_min1s
+label 0094 leds_week
 label 009e transpose
 label 00b9 cur_note_with_transpose
 label 2000 opll_reg
@@ -60,6 +69,8 @@ label 400c rtc_week
 label 400d rtc_ctl_d
 label 400e rtc_ctl_e
 label 400f rtc_ctl_f
+label 6002 rtc_data?
+label 600c cur_dow
 label 6044 is_warm_boot
 label 6058 card_buf_addr
 label 6200 card_start
@@ -67,6 +78,7 @@ label 624a card_end
 label 7000 user_tune_start
 label 71c0 user_tune_end
 *code
+label c000 check_mode
 label c065 unk_jumptable
 label c323 upload_user_patch_b
 label c33a patch_bank
@@ -76,6 +88,9 @@ label e080 warm_boot_magic
 label e08c cold_boot
 label e084 default_patch?
 label e11a warm_boot
+label e5c6 card_err
+label e606 sevenseg_2dig_lut2
+label e608 sevenseg_2dig_lut2_actual
 label e6a7 card_type_jumptable
 label e6a9 card_type_jumptable_actual
 label e6b3 card_timer_program
@@ -86,6 +101,7 @@ label eb5e card_unk_5
 label ebaf write_warm_boot
 label ec13 dummy_rts_ec13
 label f2db sevenseg_lut
+label f3bb sevenseg_2dig_lut
 label f8cb dummy_rts_f8cb
 label fa83 bit_lut
 label fab0 tune_start_end_addr_lut
@@ -96,12 +112,22 @@ label fb3b tune_ding_dong
 
 *comments
 *vars
-lcomment 0003 bit 1 optical reader latch?
+lcomment 0003 bit 1 optical reader latch
+lcomment 0053 bit 5 controls check mode, bit 4 also does something
 lcomment 005b b = 1 timer program, 2 = chime program, 3 4 5 = ???
+lcomment 0091 also something else because bit 7 is used
+lcomment 0094 also something else because bit 7 is used
 *code
+lcomment c000 enabled by CHECK SW on board
+lcomment c012 7
+lcomment c016 5
+lcomment c01a 7
 lcomment c16b end of card marker
 lcomment c323 b must be 1-indexed, patches actually start at $c33a
 lcomment e0b9 clear out user tune
+lcomment e5dd E
+lcomment e5e1 rr
+lcomment e5f3 E
 lcomment e65d read card type
 lcomment e65f timer program
 lcomment e664 chime program
@@ -109,5 +135,7 @@ lcomment e669 ???
 lcomment e66e ???
 lcomment e673 ???
 lcomment e682 end of card marker
+lcomment f3a8 P
+lcomment f3bb nums 0-15, blank padded for <10
 lcomment f8d1 OCF1
 lcomment fac8 <note num, like midi> <delay time>
