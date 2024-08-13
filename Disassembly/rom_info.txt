@@ -7,6 +7,8 @@ option noflex
 *regions
 word c065-c07a *unknown jumptable
 data c33a-c379 *patch bank
+unused c59c-cfff
+unused dabc-dfff
 data d193-d1aa
 unused d1ab-d7ff
 data d800-dabb
@@ -14,8 +16,6 @@ data e080-e083 *warm boot magic
 data e084-e08b *default patch?
 word e608-e657 *7seg 2digit lut 2
 word e6a9-e6b2 *card type jumptable
-unused dabc-dfff
-unused c59c-cfff
 data f27f-f286 *dow led lut
 data f2db-f2f2 *7seg lut
 word f3bb-f3da *7seg 2digit lut
