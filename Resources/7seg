@@ -1,0 +1,23 @@
+common cathode 7-segment led data
+0   3f
+1   06
+2   5b
+3   4f
+4   66
+5   6d
+6   7d
+7   27 (07)
+8   7f
+9   6f (67)
+A   77
+b   7c
+C   39
+d   5e
+E   79
+F   71
+
+H   76
+
+P   73
+
+r   50
