@@ -47,7 +47,7 @@
 
     $data[11][0] = true; //mode 1
 
-    $im = imagecreatetruecolor($cardwidth * $pixels_per_mm, ($startblank + (3 * $numwords)) * $pixels_per_mm);
+    $im = imagecreatetruecolor($cardwidth * $pixels_per_mm, ($startblank + ($wordpitch * $numwords)) * $pixels_per_mm);
     $bottommost = imagesy($im)-1;
     $rightmost = imagesx($im)-1;
     imagefill($im, 0, 0, imagecolorallocate($im, 255, 255, 255));
