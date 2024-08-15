@@ -5,7 +5,9 @@ option begin c000
 option noflex
 
 *regions
-word c065-c07a *unknown jumptable
+word c065-c07a *check mode jumptable
+data c19d-c1b4 *card test data
+word c1e5-c1f6 *led test jumptable
 data c33a-c379 *patch bank
 unused c59c-cfff
 unused dabc-dfff
@@ -16,6 +18,8 @@ data e080-e083 *warm boot magic
 data e084-e08b *default patch?
 word e608-e657 *7seg 2digit lut 2
 word e6a9-e6b2 *card type jumptable
+word e7cf-e7ec *timer pgm page lut
+word e999-e9b6 *user tune page lut
 data f27f-f286 *dow led lut
 data f2db-f2f2 *7seg lut
 word f3bb-f3da *7seg 2digit lut
@@ -75,11 +79,29 @@ label 6044 is_warm_boot
 label 6058 card_buf_addr
 label 6200 card_start
 label 624a card_end
+label 6300 timer_program_start
+label 65bc timer_program_end
 label 7000 user_tune_start
 label 71c0 user_tune_end
 *code
 label c000 check_mode
-label c065 unk_jumptable
+label c065 check_mode_jumptable
+label c157 card_test
+label c19d card_test_data
+label c1b5 led_test
+label c1e5 led_test_jumptable
+label c1f7 led_test_7seg
+label c228 led_test_week
+label c256 led_test_other
+label c29a led_test_unk
+label c2d8 led_test_unk2
+label c2e7 check_unk
+label c2fd check_patches?
+label c431 check_unk3
+label c4fb ram_test
+label c572 check_unk5
+label c59a check_rts_c59a
+label c59b check_rts_c59b
 label c323 upload_user_patch_b
 label c33a patch_bank
 label c37a opll_upload_user_patch_x
@@ -94,7 +116,11 @@ label e608 sevenseg_2dig_lut2_actual
 label e6a7 card_type_jumptable
 label e6a9 card_type_jumptable_actual
 label e6b3 card_timer_program
+label e7cd timer_program_page_lut
+label e7cf timer_program_page_lut_actual
 label e8c7 card_chime_program
+label e997 user_tune_page_lut
+label e999 user_tune_page_lut_actual
 label ea9a card_unk_3
 label eb44 card_unk_4
 label eb5e card_unk_5
@@ -123,6 +149,8 @@ lcomment c012 7
 lcomment c016 5
 lcomment c01a 7
 lcomment c16b end of card marker
+lcomment c125 C
+lcomment c129 H
 lcomment c323 b must be 1-indexed, patches actually start at $c33a
 lcomment e0b9 clear out user tune
 lcomment e5dd E
