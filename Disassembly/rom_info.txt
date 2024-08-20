@@ -8,6 +8,7 @@ option noflex
 word c065-c07a *check mode jumptable
 data c19d-c1b4 *card test data
 word c1e5-c1f6 *led test jumptable
+word c288-c299 *led_test_other data
 data c33a-c379 *patch bank
 unused c59c-cfff
 unused dabc-dfff
